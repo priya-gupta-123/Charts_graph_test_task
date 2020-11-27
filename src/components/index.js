@@ -172,6 +172,9 @@ export default class index extends Component {
            
                 </div>
             </div>
+            <Table
+             columns={Tables.CollegeTable}
+             />
             </>
         )
     }
