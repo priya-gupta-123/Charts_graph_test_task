@@ -7,13 +7,11 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const Table = (props) => {
-
-    console.log(props.columns)
     return (
     <div style={{marginLeft:"20px"}}>
         <div className="ag-theme-alpine" style={ { height: 400, width: 1000,textAlign:"center" } }>
             <AgGridReact
-                rowData={CollegeFakeDb.data}
+                rowData={props.rowData}
                 columnDefs={props.columns}
                 >
             </AgGridReact>

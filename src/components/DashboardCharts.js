@@ -61,7 +61,6 @@ class SessionByDevice extends React.Component {
             series={this.props.series}
             type="donut"
             height={290}
-            onClick={(e) => console.log(e.target.value)}
           />
 
           <div class="chart-info d-flex justify-content-between mb-1">

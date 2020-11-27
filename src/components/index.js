@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DashboardCharts from "./DashboardCharts"
 import CollegeFakeDb from "../server/collegeDb/college.json"
+import StudentFakeDb from "../server/studentDb/student.json"
 import Table from "./table"
 
 let $primary = "#7367F0",
@@ -23,13 +24,13 @@ let $primary = "#7367F0",
 export default class index extends Component {
     constructor(props) {
         super(props)
-    
         this.state = {
             series:[],
             labels:["Haryana","Punjab","Himachal"],
             CourseSeries:[],
             CourseLabels:["computerScience","IT","Electronics"],
             selectedTable:'',
+            rowData:[],
             Tables:{
                 CollegeTable:[
                     {
@@ -56,7 +57,6 @@ export default class index extends Component {
                         field: 'State',
                         sortable: true,
                         filter: true,
-                        checkboxSelection: true
                       },
                       {
                         headerName: 'Country',
@@ -76,8 +76,36 @@ export default class index extends Component {
                         sortable: true,
                         filter: true
                       }
+                ],
+                StudentTable:[
+                    {
+                        headerName: 'id',
+                        field: 'id',
+                        sortable: true,
+                        filter: true,
+                        checkboxSelection: true
+                      },
+                      {
+                        headerName: 'Skills',
+                        field: 'Skills',
+                        sortable: true,
+                        filter: true
+                      },
+                      {
+                        headerName: 'Year of Batch',
+                        field: 'Yearofbatch',
+                        sortable: true,
+                        filter: true
+                      },
+                      {
+                        headerName: 'colleage_id',
+                        field: 'colleage_id',
+                        sortable: true,
+                        filter: true,
+                      },
                 ]
-            }
+            },
+            ActiveTable:[]
         }
     }
 
@@ -122,30 +150,42 @@ export default class index extends Component {
     componentDidMount(){
         this.fetchCollegesByState()
         this.fetchCourses()
-        console.log(CollegeFakeDb)
+        console.log(StudentFakeDb)
     }
 
-    collegeSelected =(selected)=>{
+    selectValueFromState =(selected)=>{
+        const {labels} = this.state
+        this.setState({selectedTable:labels[selected]})
+    }
+
+    selectValueFromCollege =(selected)=>{
         const {CourseLabels} = this.state
         this.setState({selectedTable:CourseLabels[selected]})
     }
 
     componentDidUpdate(prevProps,prevState){
-        if(prevState.selectedTable !== this.state.selectedTable){
-            console.log(this.state.selectedTable)
+        const {selectedTable,Tables} = this.state
+        const {CollegeTable,StudentTable} = Tables
+        if(prevState.selectedTable !== selectedTable){
+            if(selectedTable.search('Haryana') || selectedTable.search('Punjab') || selectedTable.search('Himachal') ){
+                const rowData = CollegeFakeDb.data.filter((data)=>data.State ===selectedTable)
+                return  this.setState({ActiveTable:CollegeTable,rowData})
+            }else{
+                return  this.setState({ActiveTable:StudentTable})
+            }
         }
     }
 
 
     render() {
-    const {Tables} = this.state
+        const {Tables,rowData,ActiveTable} = this.state
         return (
             <>
             <div className="GraphTable">
             <div className="container">
-                <div className="row">
-                    <div className="col-sm-6">
-                    <DashboardCharts
+             <div className="row">
+             <div className="col-sm-6">
+             <DashboardCharts
               primary={$primary}
               warning={$warning}
               danger={$danger}
@@ -154,10 +194,11 @@ export default class index extends Component {
               dangerLight={$danger_light}
               series={this.state.series}
               labels={this.state.labels}
+              getSelectedValue={this.selectValueFromState}
             />
-                    </div>
-                    <div className="col-sm-6">
-                    <DashboardCharts
+             </div>
+             <div className="col-sm-6">
+             <DashboardCharts
               primary={$colorNewOne}
               warning={$colorNewTwo}
               danger={$colorNewThree}
@@ -166,15 +207,22 @@ export default class index extends Component {
               dangerLight={$colorNewThreeLight}
               series={this.state.CourseSeries}
               labels={this.state.CourseLabels}
+              getSelectedValue={this.selectValueFromCollege}
             />
-                    </div>
-                </div>
-           
-                </div>
+        </div>
+            </div>   
+        </div>
             </div>
-            <Table
-             columns={Tables.CollegeTable}
-             />
+        {
+        rowData.length !== 0 
+        ? 
+        <Table
+             rowData={rowData}
+             columns={ActiveTable}
+        />
+        :
+        null
+        }
             </>
         )
     }
