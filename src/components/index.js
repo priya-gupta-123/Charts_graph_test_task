@@ -8,7 +8,17 @@ let $primary = "#7367F0",
   $warning = "#FF9F43",
   $primary_light = "#9c8cfc",
   $warning_light = "#FFC085",
-  $danger_light = "#f29292"
+  $danger_light = "#f29292",
+
+  $colorNewOne = "#00d2e2",
+  $colorNewTwo = "#28c76f",
+  $colorNewThree = "#ff9f43",
+
+  $colorNewOneLight = "#2fe9f7",
+  $colorNewTwoLight = "#67f5a6",
+  $colorNewThreeLight = "#ffc792"
+
+
 
 export default class index extends Component {
     constructor(props) {
@@ -130,8 +140,12 @@ export default class index extends Component {
     render() {
     const {Tables} = this.state
         return (
-            <div>
-            {/* <DashboardCharts
+            <>
+            <div className="GraphTable">
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-6">
+                    <DashboardCharts
               primary={$primary}
               warning={$warning}
               danger={$danger}
@@ -141,32 +155,24 @@ export default class index extends Component {
               series={this.state.series}
               labels={this.state.labels}
             />
-            <DashboardCharts
-              primary={$primary}
-              warning={$warning}
-              danger={$danger}
-              primaryLight={$primary_light}
-              warningLight={$warning_light}
-              dangerLight={$danger_light}
+                    </div>
+                    <div className="col-sm-6">
+                    <DashboardCharts
+              primary={$colorNewOne}
+              warning={$colorNewTwo}
+              danger={$colorNewThree}
+              primaryLight={$colorNewOneLight}
+              warningLight={$colorNewTwoLight}
+              dangerLight={$colorNewThreeLight}
               series={this.state.CourseSeries}
               labels={this.state.CourseLabels}
-            /> */}
-            <DashboardCharts
-              primary={$primary}
-              warning={$warning}
-              danger={$danger}
-              primaryLight={$primary_light}
-              warningLight={$warning_light}
-              dangerLight={$danger_light}
-              series={this.state.CourseSeries}
-              labels={this.state.CourseLabels}
-              getSelectedValue={this.collegeSelected}
-            /> 
-            <Table 
-            // rowData={}
-            columns={Tables.CollegeTable}
-             />
+            />
+                    </div>
+                </div>
+           
+                </div>
             </div>
+            </>
         )
     }
 }
