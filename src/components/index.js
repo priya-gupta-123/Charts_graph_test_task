@@ -37,7 +37,6 @@ export default class index extends Component {
                         field: 'id',
                         sortable: true,
                         filter: true,
-                        checkboxSelection: true
                       },
                       {
                         headerName: 'Name',
@@ -56,7 +55,6 @@ export default class index extends Component {
                         field: 'State',
                         sortable: true,
                         filter: true,
-                        checkboxSelection: true
                       },
                       {
                         headerName: 'Country',
@@ -170,11 +168,28 @@ export default class index extends Component {
                     </div>
                 </div>
            
-                </div>
-            </div>
-            <Table
+           <div className="row">
+               <div className="col-md-12">
+               <div class="card">
+    <div class="card-header">
+        <div class="card-title">Table Basic</div>
+      
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+        <Table className="TableCustom" 
              columns={Tables.CollegeTable}
              />
+        </div>
+    </div>
+    </div>
+
+              
+               </div>
+           </div>
+                </div>
+            </div>
+            
             </>
         )
     }

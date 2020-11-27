@@ -1,4 +1,5 @@
 import Index from "./components/index"
+import CollegeDetails from "./components/CollegeDetails"
 import './App.css';
 // import  "./server/index"
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <Index />
+      <CollegeDetails />
     </div>
   );
 }

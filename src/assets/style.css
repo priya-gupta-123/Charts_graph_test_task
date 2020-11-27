@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-body {background-color: #f8f8f8; font-family: 'Montserrat', sans-serif;}
+body {background-color: #f8f8f8; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: #626262; }
 .card{margin-bottom: 2.2rem;    border: none;    border-radius: 0.5rem;    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);}    
 .chart-info {color: #626262;font-size: 1rem; font-weight: 600;}
 .card-header{    font-weight: 600;    letter-spacing: 0.05rem;    font-size: 1.32rem;    color: #2c2c2c; text-align: left; background: none !important; border: 0 !important;}
@@ -8,7 +8,18 @@ body {background-color: #f8f8f8; font-family: 'Montserrat', sans-serif;}
 .chart-info .colortwo {color: #ea5455; }
 .chart-info .colorThree {color: #ffb268; }
 .GraphTable {width: 100%; float: left; margin: 30px 0;}
-
-
-
-
+.table-responsive > div {margin-left: 0 !important;}
+.TableCustom {width: 100%;}
+.ag-theme-material .ag-header {    color: rgba(0, 0, 0, 0.54);    font-weight: 600;    font-size: inherit;    font-family: inherit;}
+.ag-header {    color: rgba(0, 0, 0, 0.54);    font-weight: 600;    font-size: inherit;    font-family: inherit; border-bottom: 1px solid #ededed;}
+.ag-theme-material .ag-cell {padding: 10px 23px; text-align: left;}
+.ag-theme-material .ag-row {border-bottom:1px solid #ededed; }
+.ag-cell-label-container {padding: 10px 23px; }
+.users-page-view-table .user-info .user-info-title {
+    min-width: 140px;     font-weight: 700;
+}
+.users-page-view-table  {text-align: left;}
+.users-page-view-table .user-info div {
+    padding: 0.5rem;
+}
+.mainContainer {margin: 30px 0;}

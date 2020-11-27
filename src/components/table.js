@@ -11,7 +11,7 @@ const Table = (props) => {
     console.log(props.columns)
     return (
     <div style={{marginLeft:"20px"}}>
-        <div className="ag-theme-alpine" style={ { height: 400, width: 1000,textAlign:"center" } }>
+        <div className="ag-theme-alpine1 ag-theme-material table" style={ { height: 400, width: '100%',textAlign:"center" } }>
             <AgGridReact
                 rowData={CollegeFakeDb.data}
                 columnDefs={props.columns}
