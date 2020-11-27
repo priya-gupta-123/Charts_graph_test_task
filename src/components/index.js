@@ -120,6 +120,12 @@ export default class index extends Component {
         this.setState({selectedTable:CourseLabels[selected]})
     }
 
+    componentDidUpdate(prevProps,prevState){
+        if(prevState.selectedTable !== this.state.selectedTable){
+            console.log(this.state.selectedTable)
+        }
+    }
+
 
     render() {
     const {Tables} = this.state
@@ -157,7 +163,8 @@ export default class index extends Component {
               getSelectedValue={this.collegeSelected}
             /> 
             <Table 
-             columns={Tables.CollegeTable}
+            // rowData={}
+            columns={Tables.CollegeTable}
              />
             </div>
         )
