@@ -1,25 +1,16 @@
 import React from "react";
 import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
 import Chart from "react-apexcharts";
-import { Monitor, ArrowUp, Smartphone, Tablet, ArrowDown } from "react-feather";
-import axios from "axios";
-
 
 class SessionByDevice extends React.Component {
   state = {
-    chartSelected:'',
+    chartSelected: "",
     options: {
-      dataLabels: {
-        enabled: true,
-        formatter: function (val) {
-          return val + "%"
-        }
-      },
       chart: {
-        events:{
+        events: {
           dataPointSelection: (event, chartContext, config) => {
-            this.props.getSelectedValue(config.dataPointIndex)
-          }
+            this.props.getSelectedValue(config.dataPointIndex);
+          },
         },
         toolbar: {
           show: false,
@@ -46,14 +37,11 @@ class SessionByDevice extends React.Component {
     },
     series: [58.6, 34.9, 6.5],
   };
-  componentDidMount() {
-    axios.get("");
-  }
   render() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Session By Device</CardTitle>
+          <CardTitle>{this.props.name}</CardTitle>
         </CardHeader>
         <CardBody className="pt-0">
           <Chart
@@ -123,7 +111,7 @@ class SessionByDevice extends React.Component {
               >
                 <circle cx="12" cy="12" r="10"></circle>
               </svg>
-              <span class="text-bold-600 ml-50">{this.props.labels[1]}</span>
+              <span class="text-bold-600 ml-50">{this.props.labels[2]}</span>
             </div>
             <div class="series-result">
               <span class="align-middle">{this.props.series[2]}%</span>
