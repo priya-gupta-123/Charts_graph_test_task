@@ -1,4 +1,6 @@
 import Index from "./components/index"
+import CollegeDetails from "./components/CollegeDetails"
+import  {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import './App.css';
 // import  "./server/index"
 
@@ -10,7 +12,12 @@ import "./assets/style.css";
 function App() {
   return (
     <div className="App">
-      <Index />
+       <Router>
+                <Switch >
+                  <Route path="/" exact component={Index} />:
+                  <Route path="/College-details"  component={CollegeDetails} />
+                </Switch>
+        </Router>
     </div>
   );
 }
