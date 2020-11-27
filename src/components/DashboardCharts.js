@@ -8,17 +8,28 @@ import {
 import Chart from "react-apexcharts"
 import {
   Monitor,
-  ArrowUp,
   Smartphone,
   Tablet,
-  ArrowDown,
 } from "react-feather"
 import axios from "axios"
 
+
 class SessionByDevice extends React.Component {
   state = {
+    chartSelected:'',
     options: {
+      dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+          return val + "%"
+        }
+      },
       chart: {
+        events:{
+          dataPointSelection: (event, chartContext, config) => {
+            this.props.getSelectedValue(config.dataPointIndex)
+          }
+        },
         toolbar: {
           show: false
         }
@@ -59,7 +70,6 @@ class SessionByDevice extends React.Component {
             series={this.props.series}
             type="donut"
             height={290}
-            onClick ={(e)=>console.log(e.target.value)}
           />
           <div className="chart-info d-flex justify-content-between mb-1 mt-2">
             <div className="series-info d-flex align-items-center">
