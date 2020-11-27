@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-// import { Table } from "reactstrap";
 import Table from "./table"
+// import Modal from "react-bootstrap/Modal";
+// import Button from 'react-bootstrap/Button';
 
+import Modals from "../components/Modals"
 
 export default class CollegeDetails extends Component {
     constructor(props) {
@@ -13,6 +15,7 @@ export default class CollegeDetails extends Component {
             CourseSeries:[],
             CourseLabels:["computerScience","IT","Electronics"],
             selectedTable:'',
+       
             Tables:{
                 CollegeTable:[
                     {
@@ -60,6 +63,9 @@ export default class CollegeDetails extends Component {
                 ]
             }
         }
+
+
+
     }
 
   render() {
@@ -246,7 +252,10 @@ export default class CollegeDetails extends Component {
             </div>
           </div>
         </div>
-     
+
+
+<Modals />
+
       </>
     );
   }
